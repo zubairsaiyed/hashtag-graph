@@ -554,7 +554,10 @@ No, for simplicity you may assume that all of the files in the input directory a
 If there are no connections for the entire graph, then you can count the average as `0.00`.  
 
 * *Should I count self connections if a hashtag appears multiple times in a tweet?*  
-No, for simplicity you should not count connection from a node to itself.  More so, the hashtag entities should properly de-duplicate these hashtags for you.
+No, you should not count connection from a node to itself.  
+
+* *If multiple tweets within a 60-second window have the same pair of hashtags, should they be connected twice?*  
+No, please don't count multiple connection.  In other words, nodes can either be connected by one edge, or not connected at all.  However, you should ensure that the timestamp of the corresponding edge is properly updated.  
 
 * *Can I use an IDE like Eclipse to write my program?*  
 Yes, you can use what ever tools you want -  as long as your `run.sh` script correctly runs the relevant target files and creates the `output.txt` file in the `tweet_output` directory.
