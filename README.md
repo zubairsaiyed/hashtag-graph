@@ -539,7 +539,10 @@ You should use the hashtags directly from the entity field of the JSON.  Please 
 No, for simplicity you may assume that all the tweets contain at least one word.  However, many tweets won't necessarily contain two hashtags, and may not form new edges in the graph.  This means you will have to test properly when implementing your solution for real data.   
 
 * *Do I need to update the average when the next tweet in the file falls outside the 60-second window?*  
-Yes, you're average should be updated each time a new tweet is processed, regardless of if it falls outside the window.  Thus, if there are 500 tweets in the `tweets.txt`, then there should be 500 averages in `output.txt`.  The only input that should be ignored are the rate-limit messages discussed above. 
+Yes, you're average should be updated each time a new tweet is processed, regardless of if it falls outside the window.  The only input that should be ignored are the rate-limit messages discussed above. Thus, if there are 500 lines in the input file, with 495 tweets in the `tweets.txt` and 5 rate limit messages, then there should be 495 lines of averages in `output.txt`. 
+
+* *Should the 60-second window be inclusive or exclusive?  In other words, for a 60-second window that ends with `01:02:30`, does it begin `01:01:30` or `01:01:31`?*  
+The 60-second window should be exclusive.  In other words, a correct window of 60 seconds is from `01:01:31` to `01:02:30`.  Given that this nuance may be confusing, our testing suite is tolerant to exclusive or inclusive windows - both windows will be considered valid.  
 
 * *Do I need to account for JSON messages that looks like `{"limit": {"track":5,"timestamp_ms":"1446218985743"} }`, which appear in the example from the data generator?*  
 These are messages from the Twitter API that result from the rate-limit.  Your solution needs to properly remove these messages from the input.
