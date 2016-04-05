@@ -11,6 +11,6 @@ if [[ $# -ne 0 ]] ; then
     chmod +x ./src/avg
 fi
 
-time ./src/avg ./tweet_input/tweets.txt ./tweet_output/output.txt 
+./src/avg ./tweet_input/tweets.txt ./tweet_output/output.txt 
 
 
