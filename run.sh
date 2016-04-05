@@ -3,7 +3,14 @@
 # example of the run script for running the average_degree calculation
 
 # I'll execute my programs, with the input directory tweet_input and output the files in the directory tweet_output
-python ./src/average_degree.py ./tweet_input/tweets.txt ./tweet_output/output.txt
+# python ./src/average_degree.py ./tweet_input/tweets.txt ./tweet_output/output.txt
 
+if [[ $# -ne 0 ]] ; then
+    printf 'Compiling...\n\n'
+    g++ -o ./src/avg ./src/average_degree.cpp 
+    chmod +x ./src/avg
+fi
+
+time ./src/avg ./tweet_input/tweets.txt ./tweet_output/output.txt 
 
 
